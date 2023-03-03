@@ -10,8 +10,8 @@ app.use(morgan('tiny'));
 
 app.use(express.static('public'));
 
-app.get('/contact', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'routes/contact.html'));
+app.get('/postuler', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'routes/postuler.html'));
 });
 
 app.listen(port, () => {
