@@ -7,17 +7,15 @@ const app = express();
 const port = 3000;
 
 app.use(morgan('tiny'));
-
 app.use(express.static('public'));
 
-app.get('/postuler', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'routes/postuler.html'));
-});
+const routes = ['postuler', 'postuler-vite', 'postuler-plus-vite'];
 
-app.get('/postuler-vite', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'routes/postuler-vite.html'));
-});
-
+for (const route of routes) {
+    app.get(`/${route}`, (req, res) => {
+        res.sendFile(path.resolve(__dirname, `routes/${route}.html`));
+    });
+}
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

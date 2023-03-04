@@ -97,3 +97,17 @@ Solution let's disable JavaScript for now.
 
 > Open `postuler-vite` and show the network trace.
 
+### Optimization 3 - Fix asset preload issue
+
+One thing the site does well, it is that it preloads the font files necessary for the page. This avoids network waterfall for page critical assets that aren't directly discoverable by the HTML scanner / pre-loader. 
+
+That said looking at the network traffic in the timeline, we are seeing a lot of fonts getting downloaded. Why? Because the URL doesn't match:
+- https://makita.localhost/assets/font/HVD%20Fonts%20-%20BrandonGrotesque-Bold.otf
+- https://makita.localhost/HVD%20Fonts%20-%20BrandonGrotesque-Bold.645d96f9d734d763912c.otf
+
+Result:
+- Preload isn't wasting bandwidth anymore
+- 5 less request that is part of the critical path
+
+> Open `postuler-plus-vite` and show the network trace.
+
