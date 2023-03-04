@@ -79,3 +79,21 @@ encode gzip {
 There is little value in using gzip or br over images since those a binary files in compressed format. In fact this can degrade performance.
 
 After those changes we are now at 1.9MB transferred size, which is a 50% reduction overall. 
+
+### Optimization 2 - Rehydration removal
+
+There is a couple of issues with the current SSR approach.
+
+When looking at the film strip we can see that the application gets blanked and in the middle of the loading. What is going on? Originally thought it was something specific to Angular router, hiding content until rehydration is done using a CSS class. That said it's not the case, the entire application gets effectively unmounted and remounted. 
+
+> Search of `"app-contact"` and add breakpoint in the `ngOnInit`. And look at the tree, it is really different.
+
+Let's look at the requests following the rehydration, 1 catches my attention:
+- https://makita.localhost/assets/Paint/Text-underline/Yellow1@2x.png
+
+Looking at the film strip, there is a rehydration issue where the color of the underline changes.
+
+Solution let's disable JavaScript for now.
+
+> Open `postuler-vite` and show the network trace.
+

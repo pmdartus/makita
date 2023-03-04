@@ -14,6 +14,11 @@ app.get('/postuler', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'routes/postuler.html'));
 });
 
+app.get('/postuler-vite', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'routes/postuler-vite.html'));
+});
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
