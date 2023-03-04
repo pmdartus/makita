@@ -9,7 +9,7 @@ const port = 3000;
 app.use(morgan('tiny'));
 app.use(express.static('public'));
 
-const routes = ['postuler', 'postuler-vite', 'postuler-plus-vite'];
+const routes = ['postuler', 'postuler-vite', 'postuler-plus-vite', 'postuler-toujours-plus-vite'];
 
 for (const route of routes) {
     app.get(`/${route}`, (req, res) => {

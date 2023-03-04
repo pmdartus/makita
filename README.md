@@ -111,3 +111,11 @@ Result:
 
 > Open `postuler-plus-vite` and show the network trace.
 
+### Optimization 4 - Optimize image loading
+
+- Remove light paper background from preload. It's way below the fold.
+- Optimize image, it is currently 66KB which is a lot for a background. Keep in mind that above ~10KB it would require multiple server roundtrips to load an HTTP response (problem with latency). Since the image is loaded via CSS, there is no straight forward way to do graceful degradation. Using MozJPEG for this as it is backward compatible with all browsers. Release by Mozilla in 2014 ([post](https://research.mozilla.org/2014/03/05/introducing-the-mozjpeg-project/)). Original file size: 66KB -> 12KB (5x reduction).
+- While we are at it let's optimize the rest of the images present on the page.
+
+> Show https://squoosh.app/editor
+
