@@ -1,15 +1,15 @@
 makita.localhost {
-    # Configure `makita.localhost` to forward requests to `localhost:3000`
-    reverse_proxy localhost:3000
+	# Configure `makita.localhost` to forward requests to `localhost:3000`
+	reverse_proxy localhost:3000
 
-    # Encode all the assets responses using gzip algorithm
-    encode gzip {
-        match {
-            header Content-Type text/*
-            header Content-Type application/json*
-            header Content-Type application/javascript*
-            # header Content-Type image/*
-            header Content-Type font/*
-        }
-    }
+	# Encode all the assets responses using gzip algorithm
+	encode gzip {
+		match {
+			header Content-Type text/*
+			header Content-Type application/json*
+			header Content-Type application/javascript*
+			# header Content-Type image/*
+			header Content-Type font/*
+		}
+	}
 }
