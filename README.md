@@ -118,4 +118,26 @@ Result:
 - While we are at it let's optimize the rest of the images present on the page.
 
 > Show https://squoosh.app/editor
+> Open `postuler-toujours-plus-vite`
 
+### Optimization 5 - Remove material icon usage
+
+- Require 2 round trips to retrieve the font for material icon:
+    - https://fonts.googleapis.com/icon?family=Material+Icons -> minimal request to set font-face
+    - https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2
+- On top of this, requires opening 2 new secure connections to new hosts.
+- It appears that Angular SSR does a good job of lazy loading main stylesheet using the `onload` trick
+
+```html
+<link
+    rel="stylesheet"
+    href="styles.5720f2108a8a4f4dad7e-img-optimized.css"
+    media="print"
+    onload="this.media='all'"
+/>
+```
+
+- Link stylesheet is parser blocking, meaning that it blocks the rest of the page from getting parsed by the browser and rendered on the screen. The Angular SSR trick of lazy loading the main stylesheet for first initial render is diminished by this. 
+- Inlining directly the icon in the generated HTML.
+
+> Open `postuler-toujours-toujours-plus-vite`
