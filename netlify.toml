@@ -1,0 +1,49 @@
+# Build and deploy
+[build]
+  publish = "public/"
+  command = "cp -a routes/. public/"
+
+# Caching
+## Scripts caching
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+## Style caching
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+## Font caching
+[[headers]]
+  for = "/*.ttf"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.oft"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+## Image caching
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
